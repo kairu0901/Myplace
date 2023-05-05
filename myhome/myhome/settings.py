@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'simple_history',
+    'home.apps.HomeConfig',
 ]
 
 MIDDLEWARE = [
@@ -80,7 +82,7 @@ DATABASES = {
         'NAME':'myhome',
         'USER':os.environ.get('DB_USER'),
         'PASSWORD':os.environ.get('DB_PASSWORD'),
-        'HOST':'',
+        'HOST':'localhost',
         'PORT':'',
     }
 }
