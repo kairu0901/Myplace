@@ -17,5 +17,5 @@ class Municipality(models.Model):
     name = models.CharField(verbose_name='市区町村名',null=True,blank=True)
     name_kana = models.CharField(verbose_name='市区町村カナ名',null=True,blank=True)
     name_eng = models.CharField(verbose_name='市区町村英名',null=True,blank=True)
-    prefecture_id = models.ForeignKey(Prefectures,verbose_name='所属都道府県',null=True,blank=True,on_delete=models.SET_NULL)
+    prefecture = models.ForeignKey(Prefectures,verbose_name='所属都道府県',null=True,blank=True,on_delete=models.SET_NULL)
     history = HistoricalRecords()
