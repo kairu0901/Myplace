@@ -1,7 +1,11 @@
 -i https://pypi.org/simple
 asgiref==3.6.0 ; python_version >= '3.7'
+beautifulsoup4==4.12.2 ; python_full_version >= '3.6.0'
 django==4.2.1
+django-adminlte-3==0.1.6
+django-bootstrap4==23.1
 django-simple-history==3.3.0
 psycopg2-binary==2.9.6
+soupsieve==2.4.1 ; python_version >= '3.7'
 sqlparse==0.4.4 ; python_version >= '3.5'
 tzdata==2023.3 ; sys_platform == 'win32'
