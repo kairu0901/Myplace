@@ -10,6 +10,8 @@ django-simple-history = "*"
 django-bootstrap4 = "*"
 django-adminlte-3 = "*"
 pandas = "*"
+django-simple-menu = "*"
+fontawesomefree = "*"
 
 [dev-packages]
 

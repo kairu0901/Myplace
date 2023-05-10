@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'home.apps.HomeConfig',
     'bootstrap4',
     'adminlte3',
+    'fontawesomefree',
 ]
 
 MIDDLEWARE = [
