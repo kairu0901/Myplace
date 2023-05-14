@@ -39,10 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'simple_history',
-    'home.apps.HomeConfig',
     'bootstrap4',
     'adminlte3',
     'fontawesomefree',
+    'home.apps.HomeConfig',
+    'weather_report.apps.WeatherReportConfig',
 ]
 
 MIDDLEWARE = [
