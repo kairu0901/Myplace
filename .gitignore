@@ -1,2 +1,5 @@
 myplace/home/migrations/*
+myenv/*
 .vscode/
+*.pyc
+myplace/local_settings/*

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block page-title %}
+<h1 class="m-0">Chat with GPT</h1>
+{% endblock page-title %}
+
+{% block breadcrumb %}
+<li class="breadcrumb-item"><a href="#">Home</a></li>
+<li class="breadcrumb-item active">Chat with GPT</li>
+{% endblock breadcrumb %}
+
+{% block main-content %}
+<div class="container mt-5">
+    <h1 class="text-center">Chat with GPT</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.user_input }}
+        </div>
+        <button type="submit" class="btn btn-primary">Send</button>
+    </form>
+
+    {% if response_text %}
+    <div class="mt-4">
+        <h4>Response:</h4>
+        <p>{{ response_text }}</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock main-content %}
+

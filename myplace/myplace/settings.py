@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'fontawesomefree',
     'home.apps.HomeConfig',
     'weather_report.apps.WeatherReportConfig',
+    'chat.apps.ChatConfig',
 ]
 
 MIDDLEWARE = [
