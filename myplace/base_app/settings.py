@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-7z38oth$c(&85n#sxbb6s%wk*)o%!1(-e0+m8a&38=df9$n^47'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['52.198.128.181', '127.0.0.1']
 
 
 # Application definition
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'bootstrap4',
     'adminlte3',
     'fontawesomefree',
+    'base_app',
     'home.apps.HomeConfig',
     'weather_report.apps.WeatherReportConfig',
     'chat.apps.ChatConfig',
@@ -57,7 +58,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'myplace.urls'
+ROOT_URLCONF = 'base_app.urls'
 
 TEMPLATES = [
     {
@@ -70,12 +71,13 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'context_processors.sidebar_menu',
             ],
         },
     },
 ]
 
-WSGI_APPLICATION = 'myplace.wsgi.application'
+WSGI_APPLICATION = 'base_app.wsgi.application'
 
 
 # Database

@@ -4,6 +4,9 @@ from django.conf import settings
 from .forms import ChatForm
 from openai import OpenAI
 from local_settings.settings_code import OPENAI_API_KEY
+from .models import ChatLog
+from datetime import datetime
+import pytz
 
 client = OpenAI(api_key=OPENAI_API_KEY)
 class ChatView(FormView):
@@ -24,6 +27,11 @@ class ChatView(FormView):
             max_tokens=500,
             temperature=0.7)
             response_text = response.choices[0].message.content
+            ChatLog.objects.create(
+                user_input = user_input,
+                gpt_response  = response_text,
+                created_at = datetime.now(pytz.timezone('Asia/Tokyo'))
+            )
         except Exception as e:
             response_text = f"エラーが発生しました: {e}"
 
