@@ -1,17 +1,22 @@
  # views.py
 from django.views.generic import FormView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.conf import settings
-from .forms import ChatForm
+from django.urls import reverse_lazy
+
 from openai import OpenAI
-from local_settings.settings_code import OPENAI_API_KEY
-from .models import ChatLog
 from datetime import datetime
 import pytz
 
+from .forms import ChatForm
+from .models import ChatLog
+from local_settings.settings_code import OPENAI_API_KEY
+
 client = OpenAI(api_key=OPENAI_API_KEY)
-class ChatView(FormView):
+class ChatView(LoginRequiredMixin,FormView):
     template_name = "chat/chat.html"
     form_class = ChatForm
+    login_url = reverse_lazy("login")
     success_url = "/"
 
     def form_valid(self, form):

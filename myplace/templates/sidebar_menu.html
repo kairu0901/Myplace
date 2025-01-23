@@ -1,30 +1,28 @@
 {% load menu_tags %}
-<div class="sidebar">
-  <nav class="mt-2">
-    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-      {% for item in sidebar_menu_items %}
-        <li class="nav-header"><i class="{{ item.icon }}"></i>{{ item.header_name }}</li>
-        {% for menu in item.menus %}
-          <li class="nav-item">
-            <a href="#" class="nav-link active">
-              <i class="{{ menu.icon }}"></i>
-              <p>
-                {{ menu.name }}
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              {% for child in menu.children %}
-                <li class="nav-item">
-                  <a href="{{ child.url }}" class="nav-link {% is_active request child.url %}">
-                    <i class="{{ child.icon }}"></i>
-                    <p>{{ child.name }}</p>
-                  </a>
-                </li>
-              {% endfor %}
-            </ul>
-        {% endfor %}
+<nav class="mt-2">
+  <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+    {% for item in sidebar_menu_items %}
+      <li class="nav-header"><i class="{{ item.icon }}"></i>{{ item.header_name }}</li>
+      {% for menu in item.menus %}
+        <li class="nav-item">
+          <a href="#" class="nav-link active">
+            <i class="{{ menu.icon }}"></i>
+            <p>
+              {{ menu.name }}
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            {% for child in menu.children %}
+              <li class="nav-item">
+                <a href="{{ child.url }}" class="nav-link {% is_active request child.url %}">
+                  <i class="{{ child.icon }}"></i>
+                  <p>{{ child.name }}</p>
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
       {% endfor %}
-    </ul>
-  </nav>
-</div>
+    {% endfor %}
+  </ul>
+</nav>

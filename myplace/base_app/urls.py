@@ -16,9 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from .views import CustomLoginView,CustomLogoutView
 
+app_name = 'base_app'
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('login/', CustomLoginView.as_view(), name='login'),
+    path('logout/', CustomLogoutView.as_view(), name='logout'),
     path('', include('home.urls')),
     path('', include('weather_report.urls')),
     path('', include('chat.urls')),
