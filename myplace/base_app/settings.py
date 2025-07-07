@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'home.apps.HomeConfig',
     'weather_report.apps.WeatherReportConfig',
     'chat.apps.ChatConfig',
+    'kashika.apps.KashikaConfig',
 ]
 
 MIDDLEWARE = [

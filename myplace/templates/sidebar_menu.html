@@ -4,8 +4,8 @@
     {% for item in sidebar_menu_items %}
       <li class="nav-header"><i class="{{ item.icon }}"></i>{{ item.header_name }}</li>
       {% for menu in item.menus %}
-        <li class="nav-item">
-          <a href="#" class="nav-link active">
+        <li class="nav-item {% parent_menu_open menu.children %}">
+          <a href="#" class="nav-link {% parent_menu_is_active menu.children %}">
             <i class="{{ menu.icon }}"></i>
             <p>
               {{ menu.name }}
@@ -15,7 +15,7 @@
           <ul class="nav nav-treeview">
             {% for child in menu.children %}
               <li class="nav-item">
-                <a href="{{ child.url }}" class="nav-link {% is_active request child.url %}">
+                <a href="{{ child.url }}" class="nav-link {% child_menu_is_active child.url %}">
                   <i class="{{ child.icon }}"></i>
                   <p>{{ child.name }}</p>
                 </a>

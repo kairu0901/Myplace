@@ -26,4 +26,5 @@ urlpatterns = [
     path('', include('home.urls')),
     path('', include('weather_report.urls')),
     path('', include('chat.urls')),
+    path('', include('kashika.urls')),
 ]

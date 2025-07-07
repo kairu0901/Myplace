@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load common_tags %}
+{% block page-title %}
+<h1 class="m-0">かーしか</h1>
+{% endblock page-title %}
+
+{% block breadcrumb %}
+
+<li class="breadcrumb-item"><a href="{% url 'home:home' %}">Home</a></li>
+<li class="breadcrumb-item active">かーしか</li>
+{% endblock breadcrumb %}
+
+{% block main-content %}
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="form-group">
+    <div class="row align-items-end">
+      <div class="col-4">
+        <label for="exampleInputFile">ファイル入力</label>
+        <div class="custom-file">
+          {{ form.file }}
+          <label class="custom-file-label" for="exampleInputFile" data-browse="参照">ファイルを選択</label>
+        </div>
+      </div>
+      <div class="col-4">
+        <button type="submit" class="btn btn-primary">アップロード</button>
+      </div>
+    </div>
+  </div>
+</form>
+
+{% if stats %}
+  <div class="card">
+    <div class="card-header">
+      <h3 class="card-title">統計値</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body" style="overflow-x: auto;">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th class="sticky-col">#</th>
+            {% for col in stats.columns %}
+              <th style="white-space: nowrap;">{{ col }}</th>
+            {% endfor %}
+          </tr>
+        </thead>
+        <tbody>
+          {% for row_label, row in stats.stat_labels|zip_lists:stats.stat_data %}
+          <tr>
+            <td class="sticky-col">{{ row_label }}</td>
+            {% for cell in row %}
+              <td>{{ cell|floatformat:2 }}</td>
+            {% endfor %}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <!-- /.card-body -->
+  </div>
+  <h2>グラフ</h2>
+  <img src="data:image/png;base64,{{ graph }}" alt="CSVグラフ">
+{% endif %}
+<style>
+/* 固定列に背景・境界・シャドウを追加 */
+.sticky-col {
+  position: sticky;
+  left: 0;
+  background-color: #f4f6f9; /* AdminLTE3のcard-bodyと近い色 */
+  z-index: 2;
+  white-space: nowrap;
+  border-right: 1px solid #dee2e6;  /* 見切れ線を明示 */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);  /* ほんのり影を付けて「浮かせる」 */
+}
+
+/* ヘッダー固定との重なり調整 */
+thead th.sticky-col {
+  z-index: 3;
+}
+</style>
+<script>bsCustomFileInput.init();</script>
+{% endblock main-content %}
