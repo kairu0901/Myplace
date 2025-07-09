@@ -31,7 +31,8 @@ if env == 'production':
 else:
   DEBUG = True
 
-ALLOWED_HOSTS = ['52.198.128.181', 'localhost', '127.0.0.1']
+# サーバーIPアドレスを記載する
+ALLOWED_HOSTS = ['18.182.56.42', 'localhost', '127.0.0.1']
 
 
 # Application definition
