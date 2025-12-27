@@ -35,6 +35,18 @@ SIDEBAR_MENU_ITEMS = [
                     },
                 ],
             },
+            {
+                "name": "管理",
+                "icon": "fa-solid fa-gear",
+                "url": "#",
+                "children": [
+                    {
+                        "name": "Django管理サイト",
+                        "icon": "fa-solid fa-screwdriver-wrench",
+                        "url": "/admin",
+                    },
+                ],
+            },
         ]
     },
 ]

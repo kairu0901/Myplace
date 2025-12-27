@@ -27,4 +27,5 @@ urlpatterns = [
     path('', include('weather_report.urls')),
     path('', include('chat.urls')),
     path('', include('kashika.urls')),
+    path("accounts/", include("allauth.urls")),
 ]
