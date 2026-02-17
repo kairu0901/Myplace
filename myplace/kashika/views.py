@@ -32,8 +32,10 @@ class CsvUploadAndResultView(TemplateView):
             plt.tight_layout()
             buf = io.BytesIO()
             plt.savefig(buf, format='png')
+            plt.close('all')
             buf.seek(0)
             image_base64 = base64.b64encode(buf.read()).decode('utf-8')
+            buf.close()
             context['graph'] = image_base64
 
         return self.render_to_response(context)
