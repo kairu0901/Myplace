@@ -123,14 +123,19 @@ AUTHENTICATION_BACKENDS = [
     "django.contrib.auth.backends.ModelBackend",
     "allauth.account.auth_backends.AuthenticationBackend",
 ]
-# ログイン/ログアウト後の遷移
-LOGIN_REDIRECT_URL = "/"
-LOGOUT_REDIRECT_URL = "/"
+# allauth設定
+ACCOUNT_AUTHENTICATION_METHOD = "username_email"
+ACCOUNT_EMAIL_REQUIRED = True
+SOCIALACCOUNT_LOGIN_ON_GET = True
+SOCIALACCOUNT_AUTO_SIGNUP = True
 
 # 取得したい情報（OIDC的には openid/email/profile が基本）
 SOCIALACCOUNT_PROVIDERS = {
     "google": {
         "SCOPE": ["openid", "email", "profile"],
+        "AUTH_PARAMS": {
+            "access_type": "online",
+        },
     }
 }
 # Password validation
@@ -163,8 +168,10 @@ USE_I18N = True
 
 USE_TZ = True
 
-LOGIN_REDIRECT_URL = '/'  # ログイン後のリダイレクト先
-LOGOUT_REDIRECT_URL = '/login'  # ログアウト後のリダイレクト先
+# ログイン/ログアウト後のリダイレクト先
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/login'
+ACCOUNT_LOGOUT_REDIRECT_URL = '/login'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
